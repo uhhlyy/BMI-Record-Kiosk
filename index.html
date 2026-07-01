@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Health Self-Check Kiosk</title>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header id="mainHeader" class="site-header">
+    <nav class="navbar navbar-expand-lg container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#hero">
+        <i class="bi bi-heart-pulse-fill" aria-hidden="true"></i>
+        <span>Health Self-Check Kiosk</span>
+      </a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navMenu"
+        aria-controls="navMenu"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+        <ul class="navbar-nav gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#bmi-form">BMI Calculator</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tips">Health Tips</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="hero" class="hero-section">
+      <div class="container">
+        <div class="row align-items-center gy-4">
+          <div class="col-lg-6 hero-text">
+            <h1>Take a Moment to Check In With Your Health</h1>
+            <p class="lead">
+              A quick, friendly self-check to help you understand your BMI
+              and get simple wellness tips — right here on campus.
+            </p>
+            <a href="#bmi-form" class="btn btn-primary btn-lg btn-start" id="startCheckBtn">
+              Start Health Check
+            </a>
+          </div>
+          <div class="col-lg-6 text-center">
+            <img
+              src="images/logo.svg"
+              alt="Illustration of a person doing a wellness check"
+              class="img-fluid hero-illustration"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="floating-icons" aria-hidden="true">
+        <i class="bi bi-heart-pulse"></i>
+        <i class="bi bi-activity"></i>
+        <i class="bi bi-shield-plus"></i>
+      </div>
+    </section>
+
+    <section id="bmi-form" class="form-section">
+      <div class="container">
+        <div class="section-heading text-center">
+          <h2>BMI Self-Check</h2>
+          <p>Fill in your details below to calculate your Body Mass Index.</p>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <form id="bmiForm" class="bmi-card" novalidate>
+
+              <div class="mb-3 input-group-custom">
+                <label for="fullName" class="form-label">
+                  <i class="bi bi-person-fill" aria-hidden="true"></i> Full Name
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="fullName"
+                  name="fullName"
+                  placeholder="e.g. Juan Dela Cruz"
+                  required
+                />
+                <div class="invalid-feedback" id="fullNameError"></div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3 input-group-custom">
+                  <label for="age" class="form-label">
+                    <i class="bi bi-calendar3" aria-hidden="true"></i> Age
+                  </label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="age"
+                    name="age"
+                    placeholder="e.g. 20"
+                    min="10"
+                    max="100"
+                    required
+                  />
+                  <div class="invalid-feedback" id="ageError"></div>
+                </div>
+
+                <div class="col-md-6 mb-3 input-group-custom">
+                  <label class="form-label d-block">
+                    <i class="bi bi-gender-ambiguous" aria-hidden="true"></i> Sex
+                  </label>
+                  <div class="d-flex gap-3 sex-options">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="sex"
+                        id="sexMale"
+                        value="Male"
+                      />
+                      <label class="form-check-label" for="sexMale">Male</label>
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="sex"
+                        id="sexFemale"
+                        value="Female"
+                      />
+                      <label class="form-check-label" for="sexFemale">Female</label>
+                    </div>
+                  </div>
+                  <div class="invalid-feedback d-block" id="sexError"></div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3 input-group-custom">
+                  <label for="weight" class="form-label">
+                    <i class="bi bi-speedometer2" aria-hidden="true"></i> Weight (kg)
+                  </label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="weight"
+                    name="weight"
+                    placeholder="e.g. 60"
+                    min="20"
+                    max="300"
+                    step="0.1"
+                    required
+                  />
+                  <div class="invalid-feedback" id="weightError"></div>
+                </div>
+
+                <div class="col-md-6 mb-3 input-group-custom">
+                  <label for="height" class="form-label">
+                    <i class="bi bi-arrows-vertical" aria-hidden="true"></i> Height (cm)
+                  </label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="height"
+                    name="height"
+                    placeholder="e.g. 165"
+                    min="80"
+                    max="250"
+                    step="0.1"
+                    required
+                  />
+                  <div class="invalid-feedback" id="heightError"></div>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mt-4 form-actions">
+                <button type="submit" class="btn btn-primary btn-ripple flex-fill" id="calculateBtn">
+                  <span id="calculateBtnText">Calculate BMI</span>
+                  <span
+                    id="calculateSpinner"
+                    class="spinner-border spinner-border-sm d-none"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                </button>
+                <button type="reset" class="btn btn-outline-secondary" id="resetBtn">
+                  Reset
+                </button>
+              </div>
+
+              <p id="livePreview" class="live-preview d-none" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div
+              id="resultCard"
+              class="result-card d-none"
+              aria-live="polite"
+            >
+              </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tips" class="tips-section">
+      <div class="container">
+        <div class="section-heading text-center">
+          <h2>Health Tips</h2>
+          <p>Small habits that make a big difference.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="tip-card">
+              <div class="tip-icon"><i class="bi bi-basket2-fill" aria-hidden="true"></i></div>
+              <h3>Eat Balanced Meals</h3>
+              <p>Fill your plate with vegetables, protein, and whole grains.</p>
+            </div>
+          </div>
+       
+        
+          <div class="col-md-4">
+            <div class="tip-card">
+              <div class="tip-icon"><i class="bi bi-moon-stars-fill" aria-hidden="true"></i></div>
+              <h3>Get Enough Sleep</h3>
+              <p>Aim for 7-9 hours of quality sleep every night.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="tip-card">
+              <div class="tip-icon"><i class="bi bi-yin-yang" aria-hidden="true"></i></div>
+              <h3>Reduce Stress</h3>
+              <p>Take breaks, breathe deeply, and make time to relax.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer py-3">
+    <div class="container text-center">
+      <p class="m-0 text-muted fw-medium">Made by Ally</p>
+    </div>
+  </footer>
+
+  <div
+    class="toast-container position-fixed bottom-0 end-0 p-3"
+    id="toastContainer"
+    aria-live="assertive"
+    aria-atomic="true"
+  ></div>
+
+  <button id="backToTopBtn" class="back-to-top" aria-label="Back to top">
+    <i class="bi bi-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="script.js"></script>
+</body>
+</html>
